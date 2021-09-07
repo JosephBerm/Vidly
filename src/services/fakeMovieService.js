@@ -23,7 +23,7 @@ const movies = [
     title: "Get Out",
     genre: { _id: "5b21ca3eeb7f6fbccd471820", name: "Thriller" },
     numberInStock: 8,
-    dailyRentalRate: 3.5,
+    dailyRentalRate: 3.7,
     liked: false
   },
   {
@@ -39,7 +39,7 @@ const movies = [
     title: "Airplane",
     genre: { _id: "5b21ca3eeb7f6fbccd471814", name: "Comedy" },
     numberInStock: 7,
-    dailyRentalRate: 3.5,
+    dailyRentalRate: 3.9,
     liked: false
   },
   {
@@ -47,7 +47,7 @@ const movies = [
     title: "Wedding Crashers",
     genre: { _id: "5b21ca3eeb7f6fbccd471814", name: "Comedy" },
     numberInStock: 7,
-    dailyRentalRate: 3.5,
+    dailyRentalRate: 3.4,
     liked: false
   },
   {
@@ -79,7 +79,7 @@ const movies = [
     title: "The Avengers",
     genre: { _id: "5b21ca3eeb7f6fbccd471818", name: "Action" },
     numberInStock: 7,
-    dailyRentalRate: 3.5,
+    dailyRentalRate: 4.9,
     liked: false
   }
 ];
