@@ -9,10 +9,10 @@ class Navbar extends React.Component
             <nav className='navbar navbar-dark bg-dark'>
                 <a
                     className='navbar-brand'
-                    href='#'
+                    href='/#'
                 >
                     <i
-                        class="fa fa-home fa-2x"
+                        className="fa fa-home fa-2x"
                         aria-hidden="true"
                         onClick={ () => window.location.reload() }>
                     </i>
