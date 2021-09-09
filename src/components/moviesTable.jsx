@@ -1,54 +1,27 @@
 import React from 'react';
 import Like from '../common/like';
+import TableHeader from '../common/tableHeader';
 
 class MoviesTable extends React.Component
 {
-    callSort = (path) =>
-    {
-        console.log('Sorting -', path);
-        const sortColumn = { ...this.props.sortColumn };
-        if (sortColumn.path === path)
-        {
-            sortColumn.order = (sortColumn.order === 'asc') ? 'desc' : 'asc';
-        }
-        else
-        {
-            sortColumn.path = path;
-            sortColumn.order = 'asc';
-        }
-        this.props.onSort(sortColumn);
-    };
+    columns = [
+        { path: 'title', name: 'Title' },
+        { path: 'genre.name', name: 'Genre' },
+        { path: 'numberInStock', name: 'Stock' },
+        { path: 'dailyRentalRate', name: 'Rate' },
+        { key: 'like' },
+        { key: 'delete' }
+    ];
     render() 
     {
-        const { movies, onLike, onDelete } = this.props;
+        const { movies, onLike, onDelete, onSort, sortColumn } = this.props;
         return (
             <table className="table table-dark table-striped">
-                <thead>
-                    <tr>
-                        <th
-                            style={ { cursor: 'pointer' } }
-                            onClick={ () => this.callSort('title') }>
-                            Title
-                        </th>
-                        <th
-                            style={ { cursor: 'pointer' } }
-                            onClick={ () => this.callSort('genre.name') }>
-                            Genre
-                        </th>
-                        <th
-                            style={ { cursor: 'pointer' } }
-                            onClick={ () => this.callSort('numberInStock') }>
-                            Stock
-                        </th>
-                        <th
-                            style={ { cursor: 'pointer' } }
-                            onClick={ () => this.callSort('dailyRentalRate') }>
-                            Rate
-                        </th>
-                        <th></th>
-                        <th></th>
-                    </tr>
-                </thead>
+                <TableHeader
+                    onSort={ onSort }
+                    sortColumn={ sortColumn }
+                    columns={ this.columns }
+                />
                 <tbody>
                     { movies.map(movie => (
                         <tr key={ movie._id }>
