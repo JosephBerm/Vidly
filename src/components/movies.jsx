@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { getMovies } from '../services/fakeMovieService';
 import { getGenres } from '../services/fakeGenreService';
 import { paginate } from '../utils/paginate';
+import Navbar from './navBar';
 import MoviesTable from './moviesTable';
 import Pagination from '../common/pagination';
 import ListGroup from '../common/listGroup';
@@ -75,7 +76,7 @@ class Movies extends Component
         } = this.state;
 
         if (count === 0)
-            return <p>There are no movies in the database.</p>;
+            return <Navbar />;
 
         const filtered = selectedGenre && (selectedGenre._id !== '0')
             ? allMovies.filter(m => m.genre._id === selectedGenre._id)
@@ -87,6 +88,7 @@ class Movies extends Component
 
         return (
             <React.Fragment>
+                <Navbar />
                 <h1>There Are { count } Movies In The Database.</h1>
                 <div className='row'>
                     <div className='col-3'>
