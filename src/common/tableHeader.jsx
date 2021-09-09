@@ -2,7 +2,7 @@ import React from 'react';
 
 
 //sortColumn: obj
-//column: arr
+//columns: arr
 //onSort: func
 
 class TableHeader extends React.Component
