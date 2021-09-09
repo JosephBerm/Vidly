@@ -23,9 +23,3 @@ class Navbar extends React.Component
 }
 
 export default Navbar;
-
-/*
-<nav class="navbar navbar-dark bg-dark">
-  <!-- Navbar content -->
-</nav>
-*/
