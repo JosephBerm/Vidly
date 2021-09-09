@@ -7,11 +7,15 @@ class Navbar extends React.Component
     {
         return (
             <nav className='navbar navbar-dark bg-dark'>
-                <a className='navbar-brand' href='#'>
+                <a
+                    className='navbar-brand'
+                    href='#'
+                >
                     <i
                         class="fa fa-home fa-2x"
                         aria-hidden="true"
-                        onClick={ () => window.location.reload() }></i>
+                        onClick={ () => window.location.reload() }>
+                    </i>
                 </a>
             </nav>
         );
