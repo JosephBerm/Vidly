@@ -1,9 +1,8 @@
 import propTypes from 'prop-types';
 import _ from 'lodash';
 
-const Pagination = (props) =>
+const Pagination = ({ pageSize, itemsCount, currentPage, onPageChange }) =>
 {
-    const { pageSize, itemsCount, currentPage, onPageChange } = props;
 
     const pagesCount = Math.ceil(itemsCount / pageSize);
     //Math.ceil - Returns the smallest integer greater
@@ -19,12 +18,11 @@ const Pagination = (props) =>
                     <li
                         key={ page }
                         className={ page === currentPage ?
-                            'page-item active' : 'page-item' }>
+                            'page-item active clickable' : 'page-item clickable' }>
                         <a
                             className='page-link'
                             href='/#'
-                            onClick={ () => onPageChange(page) }
-                            style={ { cursor: 'pointer' } }>
+                            onClick={ () => onPageChange(page) }>
                             { page }
                         </a>
                     </li>

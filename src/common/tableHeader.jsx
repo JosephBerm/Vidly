@@ -32,8 +32,8 @@ class TableHeader extends React.Component
                     (
                         <th
                             key={ column.path || column.key }
-                            onClick={ () => this.callSort(column.path) }
-                            style={ { cursor: 'pointer' } }
+                            onClick={ () => (column.path) ? this.callSort(column.path) : null }
+                            className={ (column.path) ? 'clickable' : null }
                         >
                             { column.name }
                         </th>
