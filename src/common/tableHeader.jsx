@@ -23,6 +23,24 @@ class TableHeader extends React.Component
         this.props.onSort(sortColumn);
     };
 
+    getRenderIcon = (column) =>
+    {
+        const { sortColumn } = this.props;
+        if (column.path !== sortColumn.path)
+        {
+            return null;
+        }
+        if (sortColumn.order === 'asc')
+        {
+            return (<i
+                className='fa fa-sort-asc'
+            />);
+        }
+        return (<i
+            className='fa fa-sort-desc'
+        />);
+    };
+
     render()
     {
         return (
@@ -35,7 +53,7 @@ class TableHeader extends React.Component
                             onClick={ () => (column.path) ? this.callSort(column.path) : null }
                             className={ (column.path) ? 'clickable' : null }
                         >
-                            { column.name }
+                            { column.name } { this.getRenderIcon(column) }
                         </th>
                     )) }
                 </tr>
