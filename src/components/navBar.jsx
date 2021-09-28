@@ -1,13 +1,12 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
-import "font-awesome/css/font-awesome.min.css";
 
 class Navbar extends React.Component {
 	render() {
 		return (
 			<nav className='navbar navbar-expand-lg navbar-dark bg-dark'>
 				<Link className='navbar-brand' to='/'>
-					Navbar
+					Vidly
 				</Link>
 				<button
 					className='navbar-toggler'

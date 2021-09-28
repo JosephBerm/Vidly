@@ -24,6 +24,7 @@ class Login extends React.Component {
 		return (
 			<React.Fragment>
 				<div>
+					<h1>Login</h1>
 					<form onSubmit={this.handleSubmit}>
 						<div className='form-group'>
 							<label htmlFor='username'>Username</label>
