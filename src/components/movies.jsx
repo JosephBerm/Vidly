@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import { getMovies } from "../services/fakeMovieService";
 import { getGenres } from "../services/fakeGenreService";
 import { paginate } from "../utils/paginate";
-import MoviesTable from "./moviesTable";
 import Pagination from "../common/pagination";
 import ListGroup from "../common/listGroup";
+import MoviesTable from "./moviesTable";
 import _ from "lodash";
 
 class Movies extends Component {
@@ -36,6 +36,7 @@ class Movies extends Component {
 		} else {
 			console.log("Unliked -", movie.title);
 		}
+
 		this.setState({ movies });
 	};
 

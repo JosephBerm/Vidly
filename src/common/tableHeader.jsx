@@ -1,65 +1,51 @@
-import React from 'react';
-
+import React from "react";
 
 //sortColumn: obj
 //columns: arr
 //onSort: func
 
-class TableHeader extends React.Component
-{
-    callSort = (path) =>
-    {
-        console.log('Sorting -', path);
-        const sortColumn = { ...this.props.sortColumn };
-        if (sortColumn.path === path)
-        {
-            sortColumn.order = (sortColumn.order === 'asc') ? 'desc' : 'asc';
-        }
-        else
-        {
-            sortColumn.path = path;
-            sortColumn.order = 'asc';
-        }
-        this.props.onSort(sortColumn);
-    };
+class TableHeader extends React.Component {
+	callSort = (path) => {
+		console.log("Sorting -", path);
+		const sortColumn = { ...this.props.sortColumn };
+		if (sortColumn.path === path) {
+			sortColumn.order = sortColumn.order === "asc" ? "desc" : "asc";
+		} else {
+			sortColumn.path = path;
+			sortColumn.order = "asc";
+		}
+		this.props.onSort(sortColumn);
+	};
 
-    getRenderIcon = (column) =>
-    {
-        const { sortColumn } = this.props;
-        if (column.path !== sortColumn.path)
-        {
-            return null;
-        }
-        if (sortColumn.order === 'asc')
-        {
-            return (<i
-                className='fa fa-sort-asc'
-            />);
-        }
-        return (<i
-            className='fa fa-sort-desc'
-        />);
-    };
+	getRenderIcon = (column) => {
+		const { sortColumn } = this.props;
+		if (column.path !== sortColumn.path) {
+			return null;
+		}
+		if (sortColumn.order === "asc") {
+			return <i className='fa fa-sort-asc' />;
+		}
+		return <i className='fa fa-sort-desc' />;
+	};
 
-    render()
-    {
-        return (
-            <thead>
-                <tr>
-                    { this.props.columns.map(column =>
-                    (
-                        <th
-                            key={ column.path || column.key }
-                            onClick={ () => (column.path) ? this.callSort(column.path) : null }
-                            className={ (column.path) ? 'clickable' : null }
-                        >
-                            { column.name } { this.getRenderIcon(column) }
-                        </th>
-                    )) }
-                </tr>
-            </thead>
-        );
-    }
+	render() {
+		return (
+			<thead>
+				<tr>
+					{this.props.columns.map((column) => (
+						<th
+							key={column.path || column.key}
+							className={column.path ? "clickable" : null}
+							onClick={() =>
+								column.path ? this.callSort(column.path) : null
+							}>
+							{column.name} {this.getRenderIcon(column)}
+						</th>
+					))}
+				</tr>
+			</thead>
+		);
+	}
 }
 
 export default TableHeader;
