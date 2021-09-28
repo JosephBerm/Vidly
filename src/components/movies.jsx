@@ -85,7 +85,7 @@ class Movies extends Component {
 			<React.Fragment>
 				<h1>There Are {count} Movies In The Database.</h1>
 				<div className='row'>
-					<div className='col-3'>
+					<div className='col-4'>
 						<ListGroup
 							items={genres}
 							selectedItem={selectedGenre}
