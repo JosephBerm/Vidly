@@ -21,6 +21,15 @@ class Login extends React.Component {
 		return Object.keys(errors).length === 0 ? {} : errors;
 	};
 
+	validateWhileTyping = ({ name, value }) => {
+		if (name === "username") {
+			if (value.trim() === "") return "Username is Required.";
+		}
+		if (name === "password") {
+			if (value.trim() === "") return "Password is Required.";
+		}
+	};
+
 	handleSubmit = (e) => {
 		e.preventDefault();
 
@@ -33,10 +42,15 @@ class Login extends React.Component {
 	};
 
 	handleChange = ({ currentTarget: input }) => {
+		const errors = { ...this.state.errors };
+		const errorMessage = this.validateWhileTyping(input);
+		if (errorMessage) errors[input.name] = errorMessage;
+		else delete errors[input.name];
+
 		const account = { ...this.state.account };
 		account[input.name] = input.value;
 
-		this.setState({ account });
+		this.setState({ account, errors });
 	};
 
 	render() {
