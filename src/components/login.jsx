@@ -1,81 +1,29 @@
-import React from "react";
-import Input from "../common/input";
+import React, { Component } from "react";
+import Form from "./form";
+import Joi from "joi-browser";
 
-class Login extends React.Component {
+class Login extends Form {
 	state = {
-		account: { username: "", password: "" },
+		data: { username: "", password: "" },
 		errors: {},
 	};
-
-	validateonSubmit = () => {
-		const errors = {};
-		const { account } = this.state;
-
-		if (account.username.trim() === "") {
-			errors.username = "Username is required.";
-		}
-		if (account.password.trim() === "") {
-			errors.password = "Password is required.";
-		}
-
-		return Object.keys(errors).length === 0 ? {} : errors;
+	schema = {
+		username: Joi.string().required().label("Username"),
+		password: Joi.string().required().label("Password"),
 	};
 
-	validateWhileTyping = ({ name, value }) => {
-		if (name === "username") {
-			if (value.trim() === "") return "Username is Required.";
-		}
-		if (name === "password") {
-			if (value.trim() === "") return "Password is Required.";
-		}
-	};
-
-	handleSubmit = (e) => {
-		e.preventDefault();
-
-		const errors = this.validateonSubmit();
-		this.setState({ errors });
-		if (errors) return;
-
-		//call the server
-		console.log("Submitted");
-	};
-
-	handleChange = ({ currentTarget: input }) => {
-		const errors = { ...this.state.errors };
-		const errorMessage = this.validateWhileTyping(input);
-		if (errorMessage) errors[input.name] = errorMessage;
-		else delete errors[input.name];
-
-		const account = { ...this.state.account };
-		account[input.name] = input.value;
-
-		this.setState({ account, errors });
+	doSubmit = () => {
+		console.log("Submitted.");
 	};
 
 	render() {
-		const { account, errors } = this.state;
 		return (
 			<div>
 				<h1>Login</h1>
 				<form onSubmit={this.handleSubmit}>
-					<Input
-						onChange={this.handleChange}
-						value={account.username}
-						autofocus={true}
-						error={errors.username}
-						label='Username'
-						name='username'
-					/>
-					<Input
-						onChange={this.handleChange}
-						value={account.password}
-						autofocus={false}
-						error={errors.password}
-						label='Password'
-						name='password'
-					/>
-					<button className='btn btn-primary mt-3'>Login</button>
+					{this.renderInput("username", "Username")}
+					{this.renderInput("password", "Password", "password")}
+					{this.renderButton("Login")}
 				</form>
 			</div>
 		);
