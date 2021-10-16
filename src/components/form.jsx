@@ -48,7 +48,7 @@ class Form extends React.Component {
 		this.setState({ data, errors });
 	};
 
-	renderButton = (label) => {
+	renderButton(label) {
 		return (
 			<button
 				disabled={this.validateonSubmit()}
@@ -56,7 +56,7 @@ class Form extends React.Component {
 				{label}
 			</button>
 		);
-	};
+	}
 
 	renderSelect(name, label, options) {
 		const { data, errors } = this.state;
