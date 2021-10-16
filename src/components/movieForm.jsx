@@ -19,13 +19,13 @@ class MovieForm extends Form {
 	schema = {
 		_id: Joi.string(),
 		title: Joi.string().required().label("Title"),
-		genreId: Joi.string().required().label("GenreId"),
-		numberInStock: Joi.string()
+		genreId: Joi.string().required().label("Genre"),
+		numberInStock: Joi.number()
 			.required()
 			.min(0)
 			.max(100)
 			.label("Number in Stock"),
-		dailyRentalRate: Joi.string()
+		dailyRentalRate: Joi.number()
 			.required()
 			.min(0)
 			.max(10)
@@ -45,15 +45,15 @@ class MovieForm extends Form {
 		this.setState({ data: this.mapMovieInfo(movie) });
 	}
 
-	mapMovieInfo = (movie) => {
+	mapMovieInfo(movie) {
 		return {
 			_id: movie._id,
 			title: movie.title,
-			genreId: movie.genre.name,
+			genreId: movie.genre._id,
 			numberInStock: movie.numberInStock,
 			dailyRentalRate: movie.dailyRentalRate,
 		};
-	};
+	}
 
 	doSubmit = () => {
 		saveMovie(this.state.data);
@@ -68,7 +68,7 @@ class MovieForm extends Form {
 				<form onSubmit={this.handleSubmit}>
 					{this.renderInput("title", "Title")}
 					{this.renderSelect("genreId", "Genres", this.state.genres)}
-					{this.renderInput("numberInStock", "Number in Stock")}
+					{this.renderInput("numberInStock", "Number in Stock", "number")}
 					{this.renderInput("dailyRentalRate", "Rate")}
 					{this.renderButton("Save")}
 				</form>

@@ -5,7 +5,7 @@ import Select from "./../common/select";
 
 class Form extends React.Component {
 	state = {
-		data: { username: "", password: "" },
+		data: {},
 		errors: {},
 	};
 
@@ -58,21 +58,6 @@ class Form extends React.Component {
 		);
 	};
 
-	renderInput(name, label, type = "text") {
-		const { data, errors } = this.state;
-
-		return (
-			<Input
-				name={name}
-				value={data[name]}
-				error={errors[name]}
-				label={label}
-				type={type}
-				onChange={this.handleChange}
-			/>
-		);
-	}
-
 	renderSelect(name, label, options) {
 		const { data, errors } = this.state;
 
@@ -84,6 +69,21 @@ class Form extends React.Component {
 				options={options}
 				onChange={this.handleChange}
 				error={errors[name]}
+			/>
+		);
+	}
+
+	renderInput(name, label, type = "text") {
+		const { data, errors } = this.state;
+
+		return (
+			<Input
+				name={name}
+				value={data[name]}
+				error={errors[name]}
+				label={label}
+				type={type}
+				onChange={this.handleChange}
 			/>
 		);
 	}
