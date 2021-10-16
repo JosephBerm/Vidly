@@ -80,10 +80,10 @@ class Form extends React.Component {
 			<Input
 				name={name}
 				value={data[name]}
-				error={errors[name]}
 				label={label}
 				type={type}
 				onChange={this.handleChange}
+				error={errors[name]}
 			/>
 		);
 	}
