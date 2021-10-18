@@ -1,10 +1,11 @@
 import React from "react";
 import Input from "./../common/input";
 import Joi from "joi-browser";
+import Select from "./../common/select";
 
 class Form extends React.Component {
 	state = {
-		data: { username: "", password: "" },
+		data: {},
 		errors: {},
 	};
 
@@ -47,7 +48,7 @@ class Form extends React.Component {
 		this.setState({ data, errors });
 	};
 
-	renderButton = (label) => {
+	renderButton(label) {
 		return (
 			<button
 				disabled={this.validateonSubmit()}
@@ -55,22 +56,37 @@ class Form extends React.Component {
 				{label}
 			</button>
 		);
-	};
+	}
 
-	renderInput = (name, label, type = "text") => {
+	renderSelect(name, label, options) {
+		const { data, errors } = this.state;
+
+		return (
+			<Select
+				name={name}
+				value={data[name]}
+				label={label}
+				options={options}
+				onChange={this.handleChange}
+				error={errors[name]}
+			/>
+		);
+	}
+
+	renderInput(name, label, type = "text") {
 		const { data, errors } = this.state;
 
 		return (
 			<Input
 				name={name}
 				value={data[name]}
-				error={errors[name]}
 				label={label}
 				type={type}
 				onChange={this.handleChange}
+				error={errors[name]}
 			/>
 		);
-	};
+	}
 }
 
 export default Form;
