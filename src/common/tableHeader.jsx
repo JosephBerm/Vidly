@@ -1,10 +1,6 @@
-import React from "react";
+import React, { Component } from "react";
 
-//sortColumn: obj
-//columns: arr
-//onSort: func
-
-class TableHeader extends React.Component {
+class TableHeader extends Component {
 	callSort = (path) => {
 		console.log("Sorting -", path);
 		const sortColumn = { ...this.props.sortColumn };
@@ -17,7 +13,7 @@ class TableHeader extends React.Component {
 		this.props.onSort(sortColumn);
 	};
 
-	getRenderIcon = (column) => {
+	renderSortIcon = (column) => {
 		const { sortColumn } = this.props;
 		if (column.path !== sortColumn.path) {
 			return null;
@@ -36,10 +32,8 @@ class TableHeader extends React.Component {
 						<th
 							key={column.path || column.key}
 							className={column.path ? "clickable" : null}
-							onClick={() =>
-								column.path ? this.callSort(column.path) : null
-							}>
-							{column.name} {this.getRenderIcon(column)}
+							onClick={column.path ? () => this.callSort(column.path) : null}>
+							{column.label} {this.renderSortIcon(column)}
 						</th>
 					))}
 				</tr>

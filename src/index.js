@@ -1,11 +1,14 @@
 import React from "react";
-import { BrowserRouter } from "react-router-dom";
-import reportWebVitals from "./reportWebVitals";
-import ReactDOM from "react-dom";
 import App from "./App";
+import ReactDOM from "react-dom";
+import reportWebVitals from "./reportWebVitals";
+import { BrowserRouter } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.css";
 import "font-awesome/css/font-awesome.css";
+import logger from "./services/logService";
 import "./index.css";
+
+logger.init();
 
 ReactDOM.render(
 	<BrowserRouter>

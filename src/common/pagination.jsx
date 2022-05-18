@@ -1,13 +1,11 @@
-import propTypes from "prop-types";
+import React, { Component } from "react";
+import PropTypes from "prop-types";
 import _ from "lodash";
 
-const Pagination = ({ pageSize, itemsCount, currentPage, onPageChange }) => {
+const Pagination = ({ itemsCount, pageSize, currentPage, onPageChange }) => {
 	const pagesCount = Math.ceil(itemsCount / pageSize);
-	//Math.ceil - Returns the smallest integer greater
-	//than or equal to its numeric argument.
 	if (pagesCount === 1) return null;
 	const pages = _.range(1, pagesCount + 1);
-
 	return (
 		<nav>
 			<ul className='pagination'>
@@ -16,10 +14,10 @@ const Pagination = ({ pageSize, itemsCount, currentPage, onPageChange }) => {
 						key={page}
 						className={
 							page === currentPage
-								? "page-item active clickable"
-								: "page-item clickable"
+								? "page-item active clickable magnify"
+								: "page-active clickable magnify"
 						}>
-						<a className='page-link' onClick={() => onPageChange(page)}>
+						<a onClick={() => onPageChange(page)} className='page-link'>
 							{page}
 						</a>
 					</li>
@@ -29,11 +27,11 @@ const Pagination = ({ pageSize, itemsCount, currentPage, onPageChange }) => {
 	);
 };
 
-Pagination.prototype = {
-	itemsCount: propTypes.number.isRequired,
-	pageSize: propTypes.number.isRequired,
-	currentPage: propTypes.number.isRequired,
-	onPageChange: propTypes.func.isRequired,
+Pagination.propTypes = {
+	itemsCount: PropTypes.number.isRequired,
+	pageSize: PropTypes.number.isRequired,
+	currentPage: PropTypes.number.isRequired,
+	onPageChange: PropTypes.func.isRequired,
 };
 
 export default Pagination;

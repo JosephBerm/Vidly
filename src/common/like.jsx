@@ -1,20 +1,18 @@
-import React from 'react';
+const Like = ({ liked, onClick }) => {
+	let classes = "fa fa-heart";
+	if (!liked) {
+		classes += "-o";
+	} else {
+		classes += " redHeart";
+	}
 
-const Like = ({ liked, onClick }) =>
-{
-    let classes = "fa fa-heart";
-    if (!liked)
-    {
-        classes += "-o";
-    }
-    return (
-        <i
-            onClick={ onClick }
-            className={ classes + ' clickable' }
-            aria-hidden="true"
-
-        />
-    );
+	return (
+		<i
+			onClick={onClick}
+			className={classes + " clickable"}
+			aria-hidden='true'
+		/>
+	);
 };
 
 export default Like;

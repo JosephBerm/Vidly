@@ -1,16 +1,16 @@
-import React from "react";
-import TableHeader from "../common/tableHeader";
-import TableBody from "../common/tableBody";
+import React, { Component } from "react";
+import TableHeader from "./tableHeader";
+import TableBody from "./tableBody";
 
-const Table = ({ onSort, sortColumn, columns, data }) => {
+const Table = ({ columns, data, onSort, sortColumn }) => {
 	return (
 		<table className='table table-striped table-dark'>
 			<TableHeader
+				columns={columns}
 				onSort={onSort}
 				sortColumn={sortColumn}
-				columns={columns}
 			/>
-			<TableBody data={data} columns={columns} />
+			<TableBody columns={columns} data={data} />
 		</table>
 	);
 };

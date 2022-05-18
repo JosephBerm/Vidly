@@ -1,6 +1,18 @@
+:root {
+	--grayish-white: rgb(212, 212, 212);
+	--dark-grayish-blue: rgb(7, 15, 21);
+	--darker-grayish-blue: rgb(6, 13, 19);
+	--pure-white: rgb(255, 255, 255);
+	--bs-table-bg: #212529;
+	--silver: rgb(138, 147, 159);
+	--silver-blue: rgb(38, 45, 52);
+}
+
 body {
 	margin: 0;
 	padding: 0 0 0 0;
+	overflow: hidden;
+	background-color: var(--bs-table-bg);
 	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
 		"Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
 		"Helvetica Neue", sans-serif;
@@ -8,15 +20,151 @@ body {
 	-moz-osx-font-smoothing: grayscale;
 }
 
+h1 {
+	margin: 50px 0 50px 0;
+	text-align: center;
+	color: var(--pure-white);
+}
+
+/* If you put navbar-custom instead of "navbar-light" and "bg-light" */
+/* .navbar-custom {
+	background-color: var(--darker-grayish-blue);
+}
+.navbar-custom .nav-item {
+	color: var(--grayish-white);
+	font-size: medium;
+}
+
+.navbar-custom :hover {
+	color: var(--pure-white);
+} */
+
 .navbar {
-	margin-bottom: 30px;
+	box-shadow: 0 10px 25px rgba(6, 13, 19, 0.75);
+}
+/* Box-Shadow: (positive = right, negative = left)px
+                (positive = down, negative = up)px 
+					 [amount of fade]px
+					 color    */
+
+#navbar-title {
+	color: black;
+	font-size: large;
+	font-weight: bold;
+}
+
+.container {
+	width: max-content;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.forms-container {
+	margin: 50px 0 0 0;
+	width: 700px;
+	height: max-content;
+	padding: 20px 35px;
+	border-radius: 20px;
+	background-color: var(--darker-grayish-blue);
+	box-shadow: 0 0 50px rgba(6, 13, 19, 1);
+}
+
+.magnify {
+	transform: scale(1);
+	z-index: 0;
+	transition: all 0.2s ease-in-out;
+}
+.magnify:hover {
+	transform: scale(1.2);
+	z-index: 1;
+	transition: all 0.2s ease-in-out;
+}
+.list-group-item.magnify {
+	transform: scale(1);
+	z-index: 0;
+	transition: all 0.2s ease-in-out;
+}
+.list-group-item.magnify:hover {
+	transform: scale(1.2);
+	z-index: 1;
+	border: 1px solid white;
+	transition: all 0.2s ease-in-out;
+}
+
+.btn-primary {
+	width: max-content;
+	margin: 5px 0;
+	box-shadow: 0 0 15px rgba(255, 255, 255, 0.25);
+}
+.forms-container .form-control {
+	background-color: var(--grayish-white);
+}
+
+.form-label,
+.form-check-label {
+	color: var(--pure-white);
+}
+
+.list-group-item {
+	background-color: var(--bs-table-bg);
+	color: var(--grayish-white);
+	border: 1px solid;
+}
+.list-group :hover {
+	background-color: var(--darker-grayish-blue);
+	color: var(--pure-white);
+}
+.list-group .active {
+	background-color: var(--dark-grayish-blue);
+	border-color: var(--grayish-white);
+	color: --pure-white;
+}
+
+.table {
+	width: 550px;
+	vertical-align: baseline;
+	box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
+}
+
+.counter-badge {
+	margin: 0 50px 0 0;
 }
 
 .clickable {
 	cursor: pointer;
 }
 
+.btn:hover {
+	color: black;
+}
+
+.redHeart {
+	color: red;
+}
+
 code {
 	font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
 		monospace;
+}
+
+.dropDown-container {
+	background-color: var(--dark-grayish-blue);
+	color: var(--silver);
+	height: auto;
+	width: 5rem;
+	margin-top: 10rem;
+	padding: 0 1rem;
+	border: 2px solid var(--silver);
+	text-align: center;
+}
+
+.dropDown-item {
+	width: 5rem;
+	height: auto;
+	background-color: var(--dark-grayish-blue);
+	color: var(--silver);
+	border: 1px solid var(--silver);
+	text-align: center;
 }
